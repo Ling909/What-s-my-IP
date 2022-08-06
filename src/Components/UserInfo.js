@@ -28,9 +28,11 @@ const UserInfo = () => {
         <>
             <div>
                 <h2>{userData.ip}</h2>
-                <h4>{userData.location.country}</h4>
-                <h4>{userData.location.region}</h4>
-                <h4>{userData.location.timezone}</h4>
+                <p>Country: {userData.location.country}</p>
+                <p>City: {userData.location.city}</p>
+                <p>Region: {userData.location.region}</p>
+                <p>Country {userData.location.country}</p>
+                <p>ISP: {userData.location.isp}</p>
             </div>
             <LocationMap lng={userData.location.lng} lat={userData.location.lat} />
         </>
