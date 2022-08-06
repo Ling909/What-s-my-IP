@@ -38,7 +38,7 @@ const UserInfo = () => {
                 <p>City: {userData.location.city}</p>
                 <p>Region: {userData.location.region}</p>
                 <p>Country: {userData.location.country}</p>
-                <p>ISP: {userData.location.isp}</p>
+                <p>ISP: {userData.isp}</p>
             </div>
             <LocationMap lng={userData.location.lng} lat={userData.location.lat} city={userData.location.city}/>
         </>
