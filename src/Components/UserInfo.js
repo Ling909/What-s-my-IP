@@ -54,14 +54,33 @@ const UserInfo = () => {
     return isDataLoading || isCountryDataLoading ? (<Loader />): 
     (
         <>
-            <div>
-                <h2>{userData.ip}</h2>
-                <p>Country: {userCountryData[0].name.common}</p>
-                Flag: <img src={userCountryData[0].flags.png} />
-                <p>City: {userData.location.city}</p>
-                <p>Region: {userData.location.region}</p>
-                <p>Country code: {userData.location.country}</p>
-                <p>ISP: {userData.isp}</p>
+            <div className='table'>
+                <table>
+                    <thead>
+                        <th>{userData.ip}</th>
+                        <th><img src={userCountryData[0].flags.png} /></th>
+                    </thead>
+                    <tr>
+                        <td>Country</td>
+                        <td>{userCountryData[0].name.common}</td>
+                    </tr>
+                    <tr>
+                        <td>City</td>
+                        <td>{userData.location.city}</td>
+                    </tr>
+                    <tr>
+                        <td>Region</td>
+                        <td>{userData.location.region}</td>
+                    </tr>
+                    <tr>
+                        <td>Country code</td>
+                        <td>{userData.location.country}</td>
+                    </tr>
+                    <tr>
+                        <td>ISP</td>
+                        <td>{userData.isp}</td>
+                    </tr>
+                </table>
             </div>
             <LocationMap lng={userData.location.lng} lat={userData.location.lat} city={userData.location.city}/>
         </>
