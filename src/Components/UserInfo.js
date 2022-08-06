@@ -4,14 +4,19 @@ import { LocationMap } from './LocationMap.js';
 
 const UserInfo = () => {
     const [userData, setUserData] = useState('');
-    const [isLoading, setIsLoading] = useState(false);
+    const [userCountryData, setUserCountryData] = useState('');
+    const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {
        readIps();
     }, []);
 
+    useEffect(() => {
+        if(!isLoading)
+            readCountryData(userData.location.country);
+     }, [userData]);
+
     const readIps = async () => {
-        setIsLoading(true);
         fetch('https://geo.ipify.org/api/v2/country,city?apiKey=' +  process.env.REACT_APP_ipify_KEY)
             .then((res) => {
                 if (res.ok) {
@@ -21,15 +26,32 @@ const UserInfo = () => {
                 }
             })
             .then((data) => {
-                console.log(data);
+                //console.log(data);
                 setUserData(data);
-                setIsLoading(true);
+                setIsLoading(false);
+            })
+            .catch((err) => console.log(err))
+    }
+
+    const readCountryData = async (code) => {
+        setIsLoading(true);
+        fetch('https://restcountries.com/v3.1/alpha/' +  code)
+            .then((res) => {
+                if (res.ok) {
+                    return res.json();
+                } else {
+                    throw Error('Failed to fetch IP');
+                }
+            })
+            .then((data) => {
+                console.log(data);
+                setUserCountryData(data);
             })
             .catch((err) => console.log(err))
         setIsLoading(false);
     }
 
-    return !isLoading ? (<Loader />): 
+    return isLoading ? (<Loader />): 
     (
         <>
             <div>
