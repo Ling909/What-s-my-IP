@@ -2,7 +2,11 @@ import Card from './View/Card.js'
 import './View/Card.css'
 
 function App() {
-    return <Card />
+    return (
+        <div>
+            <Card />
+        </div>
+    )
 }
 
 export default App
