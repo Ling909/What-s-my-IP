@@ -26,19 +26,19 @@ const UserInfo = () => {
             'https://geo.ipify.org/api/v2/country,city?apiKey=' +
                 process.env.REACT_APP_ipify_KEY
         )
-            .then((res) => {
-                if (res.ok) {
-                    return res.json()
-                } else {
-                    throw Error('Failed to fetch IP')
-                }
-            })
-            .then((data) => {
-                console.log(data)
-                setUserData(data)
-                setIsDataLoading(false)
-            })
-            .catch((err) => console.log(err))
+        .then((res) => {
+            if (res.ok) {
+                return res.json()
+            } else {
+                throw Error('Failed to fetch IP')
+            }
+        })
+        .then((data) => {
+            console.log(data)
+            setUserData(data)
+            setIsDataLoading(false)
+        })
+        .catch((err) => console.log(err))
     }
 
     const readCountryData = async (code) => {
