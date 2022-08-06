@@ -33,7 +33,7 @@ body {
 
 .table {
     table-layout: fixed;
-    width: 70%;
+    width: 50%;
     border-collapse: collapse;
     justify-content: center;
     align-items: center;
@@ -49,11 +49,11 @@ body {
 }
 
 .table td img {
-    width: 50px;
+    width: 35px;
 }
 
 .map {
-    width: 90%;
+    width: 80%;
     margin: 0 auto;
     margin-top: 1rem;
     border-radius: 5px;
