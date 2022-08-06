@@ -107,4 +107,4 @@ const UserInfo = () => {
         </>
     )
 }
-export default UserInfo
+export default UserInfo;
