@@ -26,9 +26,7 @@ const UserInfo = () => {
             })
             .catch((err) => console.log(err))
     }, [])
-    return isLoading ? (
-        <Loader />
-    ) : (
+    return !isLoading ? <Loader />: 
         <>
             <div>
                 <h2>{userData.ip}</h2>
@@ -37,6 +35,5 @@ const UserInfo = () => {
                 <h4>{userData.location.timezone}</h4>
             </div>
         </>
-    )
 }
 export default UserInfo
