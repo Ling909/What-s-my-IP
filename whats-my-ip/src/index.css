@@ -1,0 +1,24 @@
+* {
+    font-family: sans-serif;
+}
+body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    color: rgb(78, 75, 75);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+
+    background: -webkit-linear-gradient(
+        to right,
+        #1d2b64,
+        #f8cdda
+    ); /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(
+        to right,
+        #1d2b64,
+        #f8cdda
+    ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
