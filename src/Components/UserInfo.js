@@ -1,65 +1,70 @@
-import { useEffect, useState } from 'react';
-import Loader from './Loader';
-import { LocationMap } from './LocationMap.js';
+import { useEffect, useState } from 'react'
+import Loader from './Loader'
+import { LocationMap } from './LocationMap.js'
 
 const UserInfo = () => {
-    const [userData, setUserData] = useState({});
-    const [userCountryData, setUserCountryData] = useState([]);
-    const [isDataLoading, setIsDataLoading] = useState(true);
-    const [isCountryDataLoading, setIsCountryDataLoading] = useState(true);
+    const [userData, setUserData] = useState({})
+    const [userCountryData, setUserCountryData] = useState([])
+    const [isDataLoading, setIsDataLoading] = useState(true)
+    const [isCountryDataLoading, setIsCountryDataLoading] = useState(true)
 
     useEffect(() => {
-       readIps();
-    }, []);
+        readIps()
+    }, [])
 
     useEffect(() => {
-        if(!isDataLoading)
-            readCountryData(userData.location.country);
-     }, [userData]);
+        if (!isDataLoading) readCountryData(userData.location.country)
+    }, [userData])
 
     const readIps = async () => {
-        fetch('https://geo.ipify.org/api/v2/country,city?apiKey=' +  process.env.REACT_APP_ipify_KEY)
+        fetch(
+            'https://geo.ipify.org/api/v2/country,city?apiKey=' +
+                process.env.REACT_APP_ipify_KEY
+        )
             .then((res) => {
                 if (res.ok) {
-                    return res.json();
+                    return res.json()
                 } else {
-                    throw Error('Failed to fetch IP');
+                    throw Error('Failed to fetch IP')
                 }
             })
             .then((data) => {
-                console.log(data);
-                setUserData(data);
-                setIsDataLoading(false);
+                console.log(data)
+                setUserData(data)
+                setIsDataLoading(false)
             })
             .catch((err) => console.log(err))
     }
 
     const readCountryData = async (code) => {
-        fetch('https://restcountries.com/v3.1/alpha/' +  code)
+        fetch('https://restcountries.com/v3.1/alpha/' + code)
             .then((res) => {
                 if (res.ok) {
-                    return res.json();
+                    return res.json()
                 } else {
-                    throw Error('Failed to fetch IP');
+                    throw Error('Failed to fetch IP')
                 }
             })
             .then((data) => {
-                console.log(data);
-                setUserCountryData(data);
-                setIsCountryDataLoading(false);
+                console.log(data)
+                setUserCountryData(data)
+                setIsCountryDataLoading(false)
             })
             .catch((err) => console.log(err))
     }
 
-    return isDataLoading || isCountryDataLoading ? (<Loader />): 
-    (
+    return isDataLoading || isCountryDataLoading ? (
+        <Loader />
+    ) : (
         <>
-            <div className='table'>
+            <div className="table">
                 <table>
-                    <thead>
-                        <th>{userData.ip}</th>
-                        <th><img src={userCountryData[0].flags.png} /></th>
-                    </thead>
+                    <tr>
+                        <td>{userData.ip}</td>
+                        <td>
+                            <img src={userCountryData[0].flags.png} />
+                        </td>
+                    </tr>
                     <tr>
                         <td>Country</td>
                         <td>{userCountryData[0].name.common}</td>
@@ -82,8 +87,12 @@ const UserInfo = () => {
                     </tr>
                 </table>
             </div>
-            <LocationMap lng={userData.location.lng} lat={userData.location.lat} city={userData.location.city}/>
+            <LocationMap
+                lng={userData.location.lng}
+                lat={userData.location.lat}
+                city={userData.location.city}
+            />
         </>
     )
 }
-export default UserInfo;
+export default UserInfo
