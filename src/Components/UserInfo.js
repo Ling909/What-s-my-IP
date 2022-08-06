@@ -8,7 +8,10 @@ const UserInfo = () => {
     const [userCountryData, setUserCountryData] = useState([])
     const [isDataLoading, setIsDataLoading] = useState(true)
     const [isCountryDataLoading, setIsCountryDataLoading] = useState(true);
-    let dt = DateTime.now().toLocaleString();
+    let dt = DateTime.now();
+    let dtlocal = DateTime.local(dt); 
+    let dtlocalString = dt.toLocaleString();
+    let zone = dtlocal.zoneName;
 
     useEffect(() => {
         readIps()
@@ -93,8 +96,8 @@ const UserInfo = () => {
                             <td>{userData.location.timezone}</td>
                         </tr>
                         <tr>
-                            <td>Local date</td>
-                            <td>{dt}</td>
+                            <td>Local date and zone</td>
+                            <td>{dtlocalString}, {zone}</td>
                         </tr>
                     </tbody>
                 </table>
