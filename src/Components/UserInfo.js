@@ -51,7 +51,7 @@ const UserInfo = () => {
             .catch((err) => console.log(err))
     }
 
-    return isDataLoading && isCountryDataLoading ? (<Loader />): 
+    return isDataLoading || isCountryDataLoading ? (<Loader />): 
     (
         <>
             <div>
