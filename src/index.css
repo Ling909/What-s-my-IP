@@ -38,6 +38,8 @@ body {
     border-radius: 5px;
 }
 
+.city {opacity: 0.8; color: #1d2b64; background-color: #aaa; border: 1px solid #1d2b64; border-radius: 0.3rem; padding: 0.5rem; font-weight: bold;}
+
 @keyframes spinner {
     0% {
         transform: rotate(0deg);

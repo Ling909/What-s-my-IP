@@ -7,7 +7,11 @@ const UserInfo = () => {
     const [isLoading, setIsLoading] = useState(false);
 
     useEffect(() => {
-        setIsLoading(false);
+       readIps();
+    }, []);
+
+    const readIps = async () => {
+        setIsLoading(true);
         fetch('https://geo.ipify.org/api/v2/country,city?apiKey=' +  process.env.REACT_APP_ipify_KEY)
             .then((res) => {
                 if (res.ok) {
@@ -22,7 +26,9 @@ const UserInfo = () => {
                 setIsLoading(true);
             })
             .catch((err) => console.log(err))
-    }, [])
+        setIsLoading(false);
+    }
+
     return !isLoading ? (<Loader />): 
     (
         <>
@@ -31,10 +37,10 @@ const UserInfo = () => {
                 <p>Country: {userData.location.country}</p>
                 <p>City: {userData.location.city}</p>
                 <p>Region: {userData.location.region}</p>
-                <p>Country {userData.location.country}</p>
+                <p>Country: {userData.location.country}</p>
                 <p>ISP: {userData.location.isp}</p>
             </div>
-            <LocationMap lng={userData.location.lng} lat={userData.location.lat} />
+            <LocationMap lng={userData.location.lng} lat={userData.location.lat} city={userData.location.city}/>
         </>
     )
 }
