@@ -1,4 +1,4 @@
-import UserInfo from '../Components/UserInfo'
+import UserInfo from '../Components/UserInfo';
 
 const Card = () => {
     return (
@@ -8,4 +8,4 @@ const Card = () => {
         </div>
     )
 }
-export default Card
+export default Card;

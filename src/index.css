@@ -1,24 +1,60 @@
 * {
     font-family: sans-serif;
 }
+
 body {
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
     color: rgb(78, 75, 75);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    overflow: hidden;
-
-    background: -webkit-linear-gradient(
-        to right,
-        #1d2b64,
-        #f8cdda
-    ); /* Chrome 10-25, Safari 5.1-6 */
     background: linear-gradient(
         to right,
         #1d2b64,
         #f8cdda
     ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+.card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+    width: 50%;
+    margin: 0 auto;
+    margin-top: 1rem;
+    border-radius: 5px;
+    background: #e0eafc; /* fallback for old browsers */
+    background: linear-gradient(
+        to right,
+        #cfdef3,
+        #e0eafc
+    ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+.map {
+    width: 90%;
+    margin: 0 auto;
+    margin-top: 1rem;
+    border-radius: 5px;
+}
+
+@keyframes spinner {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.spinner-container {
+    margin: 10% auto;
+}
+.spinner {
+    width: 50px;
+    height: 50px;
+    border: 10px solid #f3f3f3;
+    border-top: 10px solid #007398;
+    border-radius: 50%;
+    animation: spinner 1.5s linear infinite;
 }
